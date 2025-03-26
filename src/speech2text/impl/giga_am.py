@@ -3,6 +3,7 @@ import tempfile
 import wave
 
 import gigaam
+import torch
 
 from ..speech2text import Speech2TextModel
 
@@ -10,11 +11,7 @@ from ..speech2text import Speech2TextModel
 class GigaAMSpeech2Text(Speech2TextModel):
     def __init__(self):
         super().__init__()
-        self._model: gigaam.GigaAMASR = gigaam.load_model(
-            model_name="rnnt",
-            fp16_encoder=False,
-            device="cpu",
-        )
+        self._model: gigaam.GigaAMASR = gigaam.load_model(model_name="rnnt")
 
     def generate(self, input_data: bytes) -> str:
         # Create temporary .wav file

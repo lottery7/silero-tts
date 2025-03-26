@@ -22,6 +22,9 @@ class SileroText2Speech(Text2SpeechModel):
             speaker=self._model_id,
         )
 
+        self._device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self._model.to(self._device)
+
     def _prepare_input(self, input_data: str):
         # Transliterate text to target language
         input_data = translit(input_data, self._language)
