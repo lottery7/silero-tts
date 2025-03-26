@@ -8,8 +8,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.11, <4"
 dependencies = [
-    "torch (>=1.10)",
-    "torchaudio (>=2.6.0,<3.0.0)",
+    "torch (>=1.10,<=2.5.1)",
+    "torchaudio (>=2.0,<3.0.0)",
     "omegaconf (>=2.3.0,<3.0.0)",
     "pyaudio (>=0.2.14,<0.3.0)",
     "transliterate (>=1.10.2,<2.0.0)",
@@ -17,10 +17,18 @@ dependencies = [
     "google-genai (>=1.3.0,<2.0.0)",
     "groq (>=0.18.0,<0.19.0)",
     "numpy (<2)",
+    "gigaam @ git+https://github.com/salute-developers/GigaAM.git",
+    "pynput (>=1.8.1,<2.0.0)",
 ]
 
 [tool.poetry]
-packages = [{include = "silero_tts", from = "src"}]
+packages = [
+    {include = "app", from = "src"},
+    {include = "speech2speech", from = "src"},
+    {include = "speech2text", from = "src"},
+    {include = "text2speech", from = "src"},
+    {include = "text2text", from = "src"},
+]
 
 
 [build-system]
