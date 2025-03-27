@@ -27,7 +27,7 @@ class SileroText2Speech(Text2SpeechModel):
         self._device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self._model.to(self._device)
 
-    def _prepare_input(self, input_data: str):
+    def _prepare_input(self, input_data: str) -> str:
         # Transliterate text to target language
         input_data = translit(input_data, self._language)
 
@@ -44,17 +44,21 @@ class SileroText2Speech(Text2SpeechModel):
         return input_data
 
     @latency_logging("Silero latency: {}")
-    def generate(self, input: str) -> bytes:
+    def generate(self, text: str) -> bytes:
+        print("Feeding in Silero:", text)
+
         # Preprocess input
-        input = self._prepare_input(input)
+        text = self._prepare_input(text)
 
-        # Inference model
-        audio: torch.Tensor = self._model.apply_tts(
-            text=input,
-            speaker=self._speaker,
-            sample_rate=24000,
-            put_yo=False,
-            put_accent=True,
-        )
-
-        return audio.numpy().tobytes()
+        try:
+            # Inference model
+            audio: torch.Tensor = self._model.apply_tts(
+                text=text,
+                speaker=self._speaker,
+                sample_rate=24000,
+                put_yo=True,
+                put_accent=True,
+            )
+            return audio.numpy().tobytes()
+        except ValueError:
+            return b""

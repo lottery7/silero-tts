@@ -1,6 +1,10 @@
 import tempfile
 import wave
 
+import numpy as np
+
+from globals.audio import audio_target, audio_target_lock
+
 __all__ = ["create_wf_from_bytes"]
 
 
@@ -23,3 +27,10 @@ def create_wf_from_bytes(
         wf.writeframes(input_data)
 
     return temp_filename
+
+
+def play_silence(duration: float) -> None:
+    sample_rate = 24000
+    silence = np.zeros(int(sample_rate * duration), dtype=np.float32)
+    with audio_target_lock:
+        audio_target.write(silence.tobytes())
