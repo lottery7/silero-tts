@@ -1,3 +1,4 @@
+from globals.utils import latency_logging
 from speech2text import Speech2TextModel
 from text2speech import Text2SpeechModel
 from text2text import Text2TextModel
@@ -18,6 +19,7 @@ class Speech2SpeechPipeline(Speech2SpeechModel):
             text2speech_model,
         )
 
+    @latency_logging("Overall latency: {}")
     def generate(self, input_data: bytes) -> bytes:
         input_data: str = self._models[0].generate(input_data)
         input_data = input_data.strip() or "*неразборчиво*"

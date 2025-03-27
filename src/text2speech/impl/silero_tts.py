@@ -4,6 +4,8 @@ import torch
 from num2words import num2words
 from transliterate import translit
 
+from globals.utils import latency_logging
+
 from ..text2speech import Text2SpeechModel
 
 
@@ -41,6 +43,7 @@ class SileroText2Speech(Text2SpeechModel):
 
         return input_data
 
+    @latency_logging("Silero latency: {}")
     def generate(self, input: str) -> bytes:
         # Preprocess input
         input = self._prepare_input(input)

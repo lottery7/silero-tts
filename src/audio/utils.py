@@ -1,34 +1,25 @@
-import threading
+import tempfile
+import wave
 
-import pyaudio
+__all__ = ["create_wf_from_bytes"]
 
 
-def record_pcm_audio(source: pyaudio.Stream) -> bytes:
-    # Wait for "Enter" to start recording
-    print('Press "Enter" and speak')
+def create_wf_from_bytes(
+    input_data: bytes,
+    channels: int,
+    sample_width: int,
+    sample_rate: int,
+) -> str:
 
-    try:
-        input()
-    except KeyboardInterrupt:
-        print("Exit")
-        exit(0)
+    # Create temporary .wav file
+    with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as temp_wav:
+        temp_filename = temp_wav.name
 
-    # Create separate thread for recording
-    frames = []
-    recording = True
+    # Write input_data to temporary file
+    with wave.open(temp_filename, "wb") as wf:
+        wf.setnchannels(channels)
+        wf.setsampwidth(sample_width)
+        wf.setframerate(sample_rate)
+        wf.writeframes(input_data)
 
-    def record():
-        while recording:
-            frames.append(source.read(1024))
-
-    thread = threading.Thread(target=record)
-    thread.start()
-
-    print('Recording started. Press "Enter" to stop')
-
-    # Wait for "Enter" to stop recording
-    input()
-    recording = False
-    thread.join()
-
-    return b"".join(frames)
+    return temp_filename

@@ -19,6 +19,7 @@ dependencies = [
     "numpy (<2)",
     "gigaam @ git+https://github.com/salute-developers/GigaAM.git",
     "pynput (>=1.8.1,<2.0.0)",
+    "scipy (>=1.15.2,<2.0.0)",
 ]
 
 [tool.poetry]
@@ -28,6 +29,8 @@ packages = [
     {include = "speech2text", from = "src"},
     {include = "text2speech", from = "src"},
     {include = "text2text", from = "src"},
+    {include = "globals", from = "src"},
+    {include = "audio", from = "src"},
 ]
 
 
