@@ -26,12 +26,13 @@ dependencies = [
 [tool.poetry]
 packages = [
     {include = "app", from = "src"},
+    {include = "audio", from = "src"},
+    {include = "globals", from = "src"},
     {include = "speech2speech", from = "src"},
     {include = "speech2text", from = "src"},
+    {include = "text2sentences", from = "src"},
     {include = "text2speech", from = "src"},
     {include = "text2text", from = "src"},
-    {include = "globals", from = "src"},
-    {include = "audio", from = "src"},
 ]
 
 
