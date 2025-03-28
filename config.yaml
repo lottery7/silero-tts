@@ -1,0 +1,7 @@
+audio:
+  input:
+    channels: 1
+    sample_rate: 24000
+  output:
+    channels: 1
+    sample_rate: 24000

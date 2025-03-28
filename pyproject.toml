@@ -6,33 +6,28 @@ authors = [
     {name = "Eugene Akimov",email = "hyperflex19@gmail.com"}
 ]
 readme = "README.md"
-requires-python = ">=3.11, <3.13"
+requires-python = ">=3.10,<3.12"
 dependencies = [
-    "torch (>=1.10,<=2.5.1)",
+    "torch (>=2.0,<=2.5.1)",
     "torchaudio (>=2.0,<3.0.0)",
     "omegaconf (>=2.3.0,<3.0.0)",
     "pyaudio (>=0.2.14,<0.3.0)",
     "transliterate (>=1.10.2,<2.0.0)",
     "num2words (>=0.5.14,<0.6.0)",
     "google-genai (>=1.3.0,<2.0.0)",
-    "groq (>=0.18.0,<0.19.0)",
     "numpy (<2)",
     "gigaam @ git+https://github.com/salute-developers/GigaAM.git",
     "pynput (>=1.8.1,<2.0.0)",
     "scipy (>=1.15.2,<2.0.0)",
     "spacy (>=3.8.4,<4.0.0)",
+    "silero-vad (>=5.1.2,<6.0.0)",
 ]
 
 [tool.poetry]
 packages = [
-    {include = "app", from = "src"},
+    {include = "src", from = "./"},
     {include = "audio", from = "src"},
-    {include = "globals", from = "src"},
-    {include = "speech2speech", from = "src"},
-    {include = "speech2text", from = "src"},
-    {include = "text2sentences", from = "src"},
-    {include = "text2speech", from = "src"},
-    {include = "text2text", from = "src"},
+    {include = "ai", from = "src"},
 ]
 
 
