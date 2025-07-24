@@ -1,11 +1,9 @@
 import os
 
-import gigaam
+from silero_tts.audio.utils import create_wav_from_bytes, split_vad
+from silero_tts.utils import latency_logging
 
-from audio.utils import create_wav_from_bytes, split_vad
-from utils import latency_logging
-
-from ..speech2text import Speech2TextModel
+from silero_tts..speech2text import Speech2TextModel
 
 
 class GigaAM(Speech2TextModel):

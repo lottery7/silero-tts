@@ -5,14 +5,13 @@ from typing import Generator
 
 import numpy as np
 
-from ai.speech.to_text import Speech2TextModel
-from ai.text.to_speech import Text2SpeechModel
-from ai.text.to_text import Text2TextModel
-from audio.utils import create_wav_from_bytes, resample
-from config import CONFIG
-from utils import split_by_sentences_ru
-
-from ..speech2speech import Speech2SpeechModel
+from silero_tts.ai.speech.to_speech.speech2speech import Speech2SpeechModel
+from silero_tts.ai.speech.to_text import Speech2TextModel
+from silero_tts.ai.text.to_speech import Text2SpeechModel
+from silero_tts.ai.text.to_text import Text2TextModel
+from silero_tts.audio.utils import create_wav_from_bytes, resample
+from silero_tts.config import CONFIG
+from silero_tts.utils import split_by_sentences_ru
 
 
 def _process_sentences(

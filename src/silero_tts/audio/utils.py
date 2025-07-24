@@ -8,10 +8,9 @@ import torch
 import torchaudio.transforms as T
 from scipy.io import wavfile
 
-from config import CONFIG
-from utils import torch_single_thread
-
-from .constants import audio_target, audio_target_lock
+from silero_tts.audio.constants import audio_target, audio_target_lock
+from silero_tts.config import CONFIG
+from silero_tts.utils import torch_single_thread
 
 __all__ = ["create_wav_from_bytes"]
 

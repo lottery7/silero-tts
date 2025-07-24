@@ -2,10 +2,12 @@ import os
 
 from google import genai
 
-from ai.speech.to_speech.impl import Speech2SpeechPipeline
-from ai.speech.to_text.impl import GigaAM
-from ai.text.to_speech.impl import Silero
-from ai.text.to_text.impl import GeminiChat
+from silero_tts.ai.speech.to_speech.impl.speech_to_speech_pipeline import (
+    Speech2SpeechPipeline,
+)
+from silero_tts.ai.speech.to_text.impl.giga_am import GigaAM
+from silero_tts.ai.text.to_speech.impl.silero import Silero
+from silero_tts.ai.text.to_text.impl.gemini import GeminiChat
 
 __all__ = ["s2s_pipeline"]
 

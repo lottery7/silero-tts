@@ -1,10 +1,9 @@
 import threading
 from queue import Queue
 
-from pipeline import s2s_pipeline
-
-from .constants import *
-from .utils import play_silence, play_start_sound
+from silero_tts.audio.constants import *
+from silero_tts.audio.utils import play_silence, play_start_sound
+from silero_tts.pipeline import s2s_pipeline
 
 __all__ = ["try_start_recording", "try_end_recording"]
 
@@ -59,7 +58,10 @@ def try_end_recording() -> bool:
         return False
 
     _is_recording = False
+
+    assert _recording_thread is not None
     _recording_thread.join()
+
     print("Recording ended")
 
     if _frames:

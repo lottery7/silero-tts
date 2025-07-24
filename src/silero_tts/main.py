@@ -1,7 +1,7 @@
 import torch
 from pynput import keyboard
 
-from audio.recordings import try_end_recording, try_start_recording
+from silero_tts.audio.recordings import try_end_recording, try_start_recording
 
 wakeup_key = keyboard.Key.f4
 

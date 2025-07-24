@@ -2,7 +2,7 @@ import threading
 
 import pyaudio
 
-from config import CONFIG
+from silero_tts.config import CONFIG
 
 __all__ = [
     "pa",
